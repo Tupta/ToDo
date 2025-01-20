@@ -1,3 +1,5 @@
+#!python
+
 from PyQt5.QtWidgets import QApplication, QWidget, QTableView, QPushButton, QHBoxLayout, QVBoxLayout
 
 
@@ -6,7 +8,7 @@ class Ui_Widget(object):
         Widget.setObjectName("Widget")
        
         # Tabelaryczny widok danych
-        self.widok = QTableView(Widget)
+        self.widok = QTableView()
     
         # Przyciski PUSH
         self.logujBtn = QPushButton("Za&loguj", Widget)
