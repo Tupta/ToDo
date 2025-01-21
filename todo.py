@@ -2,7 +2,7 @@
 
 from __future__ import unicode_literals
 from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox, QInputDialog
-from gui_z0 import Ui_Widget
+from gui import Ui_Widget, LoginDialog
 
 class Task(QWidget, Ui_Widget):
 
@@ -14,9 +14,11 @@ class Task(QWidget, Ui_Widget):
         self.koniecBtn.clicked.connect(self.koniec)
 
     def loguj(self):
-        login, ok = QInputDialog.getText(self, "Zaloguj się", "Podaj login:")
-        if ok:
-            if not login or not haslo:
+        login, haslo, ok = LoginDialog.getLoginHaslo(self)
+        if not ok:
+            return
+        
+        if not login or not haslo:
                 QMessageBox.warning(self, "Błąd", 'Puty login lub hasło', QMessageBox.ok)
                 return
             QMessageBox.information(self, "Dane logowania", "Podano" + login +' ' + haslo, QMessageBox.Ok)
